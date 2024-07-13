@@ -1,0 +1,168 @@
+syntax = "proto3";
+
+package authentication_service;
+
+option go_package = "genproto/authentication_service";
+
+// Authentication Service
+service AuthenticationService {
+    // Authenticates a user and returns access and refresh tokens
+    rpc Login(LoginRequest) returns (LoginResponse){}
+
+    // Logs out a user and invalidates their refresh token
+    rpc Logout(LogoutRequest) returns (LogoutResponse){}
+
+    // Registers a new user
+    rpc Register(RegisterRequest) returns (RegisterResponse){}
+
+    // Resets the user's password using email or username
+    rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordResponse){}
+
+    // Changes the user's password
+    rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse){}
+
+    // Refreshes the access token using a refresh token
+    rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse){}
+
+    // Verifies the provided access token
+    rpc VerifyToken(VerifyTokenRequest) returns (VerifyTokenResponse){}
+
+    // Cancels an access token, making it unusable
+    rpc CancelToken(CancelTokenRequest) returns (CancelTokenResponse){}
+    // Retrieves a list of users with optional pagination and sorting
+    rpc GetUsersInfo(GetUsersInfoRequest) returns (GetUsersInfoResponse){}
+
+    // Updates the specified user's information
+    rpc UpdateUserInfo(UpdateUserInfoRequest) returns (UpdateUserInfoResponse){}
+
+    // Retrieves detailed information about a specific user
+    rpc GetUserInfo(GetUserInfoRequest) returns (GetUserInfoResponse){}
+
+    // Deletes the specified user's information
+    rpc DeleteUserInfo(DeleteUserInfoRequest) returns (DeleteUserInfoResponse){}
+}
+
+// Message Definitions
+message LoginRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    string access_token = 1;
+    string refresh_token = 2;
+}
+
+message LogoutRequest{
+    string user_id = 1;
+    string refresh_token = 2;
+}
+
+message LogoutResponse{}
+
+message RegisterRequest{
+    string username = 1;
+    string password = 2;
+    string full_name = 3;
+    string user_type = 5;
+    string email = 6;
+}
+
+message RegisterResponse{
+    string id = 1;
+    string username = 2;
+    string full_name = 3;
+    string user_type = 5;
+    string email = 6;
+    string created_at = 7;
+}
+
+message ResetPasswordRequest{
+    string email = 1;
+    string username = 2;
+}
+
+message ResetPasswordResponse{}
+
+message ChangePasswordRequest{
+    string old_password = 1;
+    string new_password = 2;
+}
+
+message ChangePasswordResponse{}
+
+message RefreshTokenRequest{
+    string user_id = 1;
+    string refresh_token = 2;
+}
+
+message RefreshTokenResponse{
+    string access_token = 1;
+    string refresh_token = 2;
+}
+
+message VerifyTokenRequest{
+    string access_token = 1;
+}
+
+message VerifyTokenResponse{}
+
+message CancelTokenRequest{
+    string access_token = 1;
+}
+
+message CancelTokenResponse{}
+
+
+//User messages
+message GetUsersInfoRequest{
+    string page = 2;
+    string limit = 3;
+    string order_by = 4;
+}
+
+message GetUsersInfoResponse{
+    repeated User users = 1;
+}
+
+message User{
+    string id = 1;
+    string username = 2;
+    string full_name = 3;
+    string user_type = 5;
+    string email = 6;
+    string created_at = 7;
+    string updated_at = 8;
+}
+
+message UpdateUserInfoRequest{
+    string id = 1;
+    string username = 2;
+    string full_name = 3;
+    string user_type = 5;
+    string email = 6;
+}
+
+message UpdateUserInfoResponse{
+    string id = 1;
+    string username = 2;
+    string full_name = 3;
+    string user_type = 5;
+    string email = 6;
+    string created_at = 7;
+    string updated_at = 8;
+}
+
+message GetUserInfoRequest{
+    string id = 1;
+}
+
+message GetUserInfoResponse{
+    User user = 1;
+}
+
+message DeleteUserInfoRequest{
+    string id = 1;
+}
+
+message DeleteUserInfoResponse{}
