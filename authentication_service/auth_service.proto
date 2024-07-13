@@ -66,6 +66,7 @@ message RegisterRequest{
     string full_name = 3;
     string user_type = 5;
     string email = 6;
+    string bio = 7;
 }
 
 message RegisterResponse{
@@ -75,6 +76,7 @@ message RegisterResponse{
     string user_type = 5;
     string email = 6;
     string created_at = 7;
+    string bio = 8;
 }
 
 message ResetPasswordRequest{
@@ -130,9 +132,10 @@ message User{
     string username = 2;
     string full_name = 3;
     string user_type = 5;
-    string email = 6;
-    string created_at = 7;
-    string updated_at = 8;
+    string bio = 6;
+    string email = 7;
+    string created_at = 8;
+    string updated_at = 9;
 }
 
 message UpdateUserInfoRequest{
@@ -141,6 +144,7 @@ message UpdateUserInfoRequest{
     string full_name = 3;
     string user_type = 5;
     string email = 6;
+    string bio = 7;
 }
 
 message UpdateUserInfoResponse{
@@ -149,8 +153,9 @@ message UpdateUserInfoResponse{
     string full_name = 3;
     string user_type = 5;
     string email = 6;
-    string created_at = 7;
-    string updated_at = 8;
+    string bio = 7;
+    string created_at = 8;
+    string updated_at = 9;
 }
 
 message GetUserInfoRequest{
