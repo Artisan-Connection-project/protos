@@ -179,7 +179,7 @@ message DeleteUserInfoResponse{}
 
 message GenerateTokenRequest{
     string username = 1;
-    string eamil = 2;
+    string email = 2;
     string password = 3;
 }
 
