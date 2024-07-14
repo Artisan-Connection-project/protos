@@ -40,7 +40,10 @@ service AuthenticationService {
 
     // Deletes the specified user's information
     rpc DeleteUserInfo(DeleteUserInfoRequest) returns (DeleteUserInfoResponse){}
+
+    rpc GenerateToken(GenerateTokenRequest) returns (GenerateTokenResponse){}
 }
+
 
 // Message Definitions
 message LoginRequest {
@@ -172,3 +175,15 @@ message DeleteUserInfoRequest{
 }
 
 message DeleteUserInfoResponse{}
+
+
+message GenerateTokenRequest{
+    string username = 1;
+    string eamil = 2;
+    string password = 3;
+}
+
+message GenerateTokenResponse{
+    string access_token = 1;
+    string refresh_token = 2;
+}
