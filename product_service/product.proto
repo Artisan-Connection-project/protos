@@ -1,67 +1,54 @@
 syntax = "proto3";
 
-package productservice;
+package product_service;
+
+option go_package = "product_service/genproto";
 
 import "google/protobuf/timestamp.proto";
 
-// Product message
+// Product message definition
 message Product {
     string id = 1;
     string name = 2;
     string description = 3;
     double price = 4;
     string category_id = 5;
-    int32 quantity = 6;
-    google.protobuf.Timestamp created_at = 7;
-    google.protobuf.Timestamp updated_at = 8;
-    string artisan_id = 9;
+    string artisan_id = 6;
+    int32 quantity = 7;
+    google.protobuf.Timestamp created_at = 8;
+    google.protobuf.Timestamp updated_at = 9;
 }
 
-// Rating message
+// Rating message definition
 message Rating {
     string id = 1;
     string product_id = 2;
     string user_id = 3;
-    float rating = 4;
+    double rating = 4;
     string comment = 5;
     google.protobuf.Timestamp created_at = 6;
 }
 
-// OrderItem message
-message OrderItem {
-    string product_id = 1;
-    int32 quantity = 2;
-    double price = 3;
-}
-
-// Address message
-message Address {
-    string street = 1;
-    string city = 2;
-    string country = 3;
-    string zip_code = 4;
-}
-
-// Order message
+// Order message definition
 message Order {
     string id = 1;
     string user_id = 2;
-    repeated OrderItem items = 3;
-    double total_amount = 4;
-    string status = 5;
-    Address shipping_address = 6;
-    google.protobuf.Timestamp created_at = 7;
-    google.protobuf.Timestamp updated_at = 8;
+    double total_amount = 3;
+    string status = 4;
+    string shipping_address = 5;
+    google.protobuf.Timestamp created_at = 6;
+    google.protobuf.Timestamp updated_at = 7;
 }
 
-// Payment message
+// Payment message definition
 message Payment {
-    string payment_id = 1;
+    string id = 1;
     string order_id = 2;
     double amount = 3;
     string status = 4;
     string transaction_id = 5;
-    google.protobuf.Timestamp created_at = 6;
+    string payment_method = 6;
+    google.protobuf.Timestamp created_at = 7;
 }
 
 // AddProductRequest message
@@ -70,48 +57,32 @@ message AddProductRequest {
     string description = 2;
     double price = 3;
     string category_id = 4;
-    int32 quantity = 5;
+    string artisan_id = 5;
+    int32 quantity = 6;
 }
 
 // AddProductResponse message
 message AddProductResponse {
-    Product product = 1;
+    string id = 1;
 }
 
 // EditProductRequest message
 message EditProductRequest {
-    string product_id = 1;
+    string id = 1;
     string name = 2;
-    double price = 3;
+    string description = 3;
+    double price = 4;
+    string category_id = 5;
+    string artisan_id = 6;
+    int32 quantity = 7;
 }
 
 // EditProductResponse message
-message EditProductResponse {
-    Product product = 1;
-}
-
-// DeleteProductResponse message
-message DeleteProductResponse {
-    string message = 1;
-}
-
-// GetProductsRequest message
-message GetProductsRequest {
-    int32 page = 1;
-    int32 limit = 2;
-}
-
-// GetProductsResponse message
-message GetProductsResponse {
-    repeated Product products = 1;
-    int32 total = 2;
-    int32 page = 3;
-    int32 limit = 4;
-}
+message EditProductResponse {}
 
 // GetProductRequest message
 message GetProductRequest {
-    string product_id = 1;
+    string id = 1;
 }
 
 // GetProductResponse message
@@ -119,34 +90,43 @@ message GetProductResponse {
     Product product = 1;
 }
 
+// GetProductsRequest message
+message GetProductsRequest {}
+
+// GetProductsResponse message
+message GetProductsResponse {
+    repeated Product products = 1;
+}
+
+// DeleteProductRequest message
+message DeleteProductRequest {
+    string id = 1;
+}
+
+// DeleteProductResponse message
+message DeleteProductResponse {}
+
 // SearchProductsRequest message
 message SearchProductsRequest {
     string query = 1;
-    string category = 2;
-    double min_price = 3;
-    double max_price = 4;
-    int32 page = 5;
-    int32 limit = 6;
 }
 
 // SearchProductsResponse message
 message SearchProductsResponse {
     repeated Product products = 1;
-    int32 total = 2;
-    int32 page = 3;
-    int32 limit = 4;
 }
 
 // AddRatingRequest message
 message AddRatingRequest {
     string product_id = 1;
-    float rating = 2;
-    string comment = 3;
+    string user_id = 2;
+    double rating = 3;
+    string comment = 4;
 }
 
 // AddRatingResponse message
 message AddRatingResponse {
-    Rating rating = 1;
+    string id = 1;
 }
 
 // GetRatingsRequest message
@@ -157,59 +137,50 @@ message GetRatingsRequest {
 // GetRatingsResponse message
 message GetRatingsResponse {
     repeated Rating ratings = 1;
-    float average_rating = 2;
-    int32 total_ratings = 3;
 }
 
 // PlaceOrderRequest message
 message PlaceOrderRequest {
-    repeated OrderItem items = 1;
-    Address shipping_address = 2;
+    string user_id = 1;
+    double total_amount = 2;
+    string status = 3;
+    string shipping_address = 4;
 }
 
 // PlaceOrderResponse message
 message PlaceOrderResponse {
-    Order order = 1;
+    string id = 1;
 }
 
 // CancelOrderRequest message
 message CancelOrderRequest {
-    string order_id = 1;
+    string id = 1;
+    string status = 2;
 }
 
 // CancelOrderResponse message
-message CancelOrderResponse {
-    Order order = 1;
-}
+message CancelOrderResponse {}
 
 // UpdateOrderStatusRequest message
 message UpdateOrderStatusRequest {
-    string order_id = 1;
+    string id = 1;
     string status = 2;
 }
 
 // UpdateOrderStatusResponse message
-message UpdateOrderStatusResponse {
-    Order order = 1;
-}
+message UpdateOrderStatusResponse {}
 
 // GetOrdersRequest message
-message GetOrdersRequest {
-    int32 page = 1;
-    int32 limit = 2;
-}
+message GetOrdersRequest {}
 
 // GetOrdersResponse message
 message GetOrdersResponse {
     repeated Order orders = 1;
-    int32 total = 2;
-    int32 page = 3;
-    int32 limit = 4;
 }
 
 // GetOrderRequest message
 message GetOrderRequest {
-    string order_id = 1;
+    string id = 1;
 }
 
 // GetOrderResponse message
@@ -220,20 +191,20 @@ message GetOrderResponse {
 // PayOrderRequest message
 message PayOrderRequest {
     string order_id = 1;
-    string payment_method = 2;
-    string card_number = 3;
-    string expiry_date = 4;
-    string cvv = 5;
+    double amount = 2;
+    string status = 3;
+    string transaction_id = 4;
+    string payment_method = 5;
 }
 
 // PayOrderResponse message
 message PayOrderResponse {
-    Payment payment = 1;
+    string id = 1;
 }
 
 // CheckPaymentStatusRequest message
 message CheckPaymentStatusRequest {
-    string order_id = 1;
+    string id = 1;
 }
 
 // CheckPaymentStatusResponse message
@@ -243,24 +214,12 @@ message CheckPaymentStatusResponse {
 
 // UpdateShippingInfoRequest message
 message UpdateShippingInfoRequest {
-    string order_id = 1;
-    string tracking_number = 2;
-    string carrier = 3;
-    google.protobuf.Timestamp estimated_delivery_date = 4;
+    string id = 1;
+    string shipping_address = 2;
 }
 
 // UpdateShippingInfoResponse message
-message UpdateShippingInfoResponse {
-    Order order = 1;
-}
-
-// ArtisanCategory message
-message ArtisanCategory {
-    string id = 1;
-    string name = 2;
-    string description = 3;
-    google.protobuf.Timestamp created_at = 4;
-}
+message UpdateShippingInfoResponse {}
 
 // AddArtisanCategoryRequest message
 message AddArtisanCategoryRequest {
@@ -270,15 +229,7 @@ message AddArtisanCategoryRequest {
 
 // AddArtisanCategoryResponse message
 message AddArtisanCategoryResponse {
-    ArtisanCategory category = 1;
-}
-
-// ProductCategory message
-message ProductCategory {
     string id = 1;
-    string name = 2;
-    string description = 3;
-    google.protobuf.Timestamp created_at = 4;
 }
 
 // AddProductCategoryRequest message
@@ -289,96 +240,64 @@ message AddProductCategoryRequest {
 
 // AddProductCategoryResponse message
 message AddProductCategoryResponse {
-    ProductCategory category = 1;
-}
-
-// Statistics message
-message Statistics {
-    int32 total_sales = 1;
-    double total_revenue = 2;
-    repeated Product top_products = 3;
-    repeated ProductCategory top_categories = 4;
+    string id = 1;
 }
 
 // GetStatisticsRequest message
-message GetStatisticsRequest {
-    google.protobuf.Timestamp start_date = 1;
-    google.protobuf.Timestamp end_date = 2;
-}
+message GetStatisticsRequest {}
 
 // GetStatisticsResponse message
 message GetStatisticsResponse {
-    Statistics statistics = 1;
+    int32 total_products = 1;
+    int32 total_orders = 2;
+    double total_revenue = 3;
+    int32 total_artisans = 4;
+    int32 total_customers = 5;
+}
+
+// GetUserActivityRequest message
+message GetUserActivityRequest {}
+
+// GetUserActivityResponse message
+message GetUserActivityResponse {
+    repeated UserActivity activities = 1;
 }
 
 // UserActivity message
 message UserActivity {
     string user_id = 1;
-    int32 login_count = 2;
-    int32 product_views = 3;
-    int32 orders_placed = 4;
-    double total_spent = 5;
-    int32 reviews_written = 6;
-}
-
-// GetUserActivityRequest message
-message GetUserActivityRequest {
-    string user_id = 1;
-    google.protobuf.Timestamp start_date = 2;
-    google.protobuf.Timestamp end_date = 3;
-}
-
-// GetUserActivityResponse message
-message GetUserActivityResponse {
-    UserActivity activity = 1;
-}
-
-// Recommendation message
-message Recommendation {
-    string id = 1;
-    string name = 2;
-    double price = 3;
-    string category_id = 4;
+    string activity = 2;
 }
 
 // GetRecommendationsRequest message
-message GetRecommendationsRequest {
-    string user_id = 1;
-    int32 limit = 2;
-}
+message GetRecommendationsRequest {}
 
 // GetRecommendationsResponse message
 message GetRecommendationsResponse {
-    repeated Recommendation recommendations = 1;
-}
-
-// ArtisanRanking message
-message ArtisanRanking {
-    string artisan_id = 1;
-    string full_name = 2;
-    float average_rating = 3;
-    int32 total_sales = 4;
-    double total_revenue = 5;
+    repeated Product recommendations = 1;
 }
 
 // GetArtisanRankingsRequest message
-message GetArtisanRankingsRequest {
-    string category = 1;
-    int32 limit = 2;
-}
+message GetArtisanRankingsRequest {}
 
 // GetArtisanRankingsResponse message
 message GetArtisanRankingsResponse {
     repeated ArtisanRanking rankings = 1;
 }
 
+// ArtisanRanking message
+message ArtisanRanking {
+    string artisan_id = 1;
+    int32 rank = 2;
+}
+
 // ProductService definition
 service ProductService {
     rpc AddProduct(AddProductRequest) returns (AddProductResponse);
     rpc EditProduct(EditProductRequest) returns (EditProductResponse);
-    rpc DeleteProduct(GetProductRequest) returns (DeleteProductResponse);
-    rpc GetProducts(GetProductsRequest) returns (GetProductsResponse);
     rpc GetProduct(GetProductRequest) returns (GetProductResponse);
+    rpc GetProducts(GetProductsRequest) returns (GetProductsResponse);
+    rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
     rpc SearchProducts(SearchProductsRequest) returns (SearchProductsResponse);
     rpc AddRating(AddRatingRequest) returns (AddRatingResponse);
     rpc GetRatings(GetRatingsRequest) returns (GetRatingsResponse);
