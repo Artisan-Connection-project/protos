@@ -91,7 +91,10 @@ message GetProductResponse {
 }
 
 // GetProductsRequest message
-message GetProductsRequest {}
+message GetProductsRequest {
+    string page = 1;
+    string limit = 2;
+}
 
 // GetProductsResponse message
 message GetProductsResponse {
