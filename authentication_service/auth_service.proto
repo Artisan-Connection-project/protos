@@ -3,6 +3,27 @@ syntax = "proto3";
 package authentication_service;
 
 option go_package = "genproto/authentication_service";
+// Define the ResetPasswordRequest message
+message ResetPasswordRequest {
+    string email = 1;
+  }
+  
+  // Define the ResetPasswordResponse message
+  message ResetPasswordResponse {
+    string message = 1;
+  }
+  
+  // Define the VerifyResetCodeRequest message
+  message VerifyResetCodeRequest {
+    string email = 1;
+    string code = 2;
+    string new_password = 3;
+  }
+  
+  // Define the VerifyResetCodeResponse message
+  message VerifyResetCodeResponse {
+    string message = 1;
+  }
 
 // Authentication Service
 service AuthenticationService {
@@ -20,7 +41,7 @@ service AuthenticationService {
 
     // Changes the user's password
     rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse){}
-
+    rpc VerifyResetCode(VerifyResetCodeRequest) returns (VerifyResetCodeResponse);
     // Refreshes the access token using a refresh token
     rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse){}
 
@@ -42,6 +63,7 @@ service AuthenticationService {
     rpc DeleteUserInfo(DeleteUserInfoRequest) returns (DeleteUserInfoResponse){}
 
     rpc GenerateToken(GenerateTokenRequest) returns (GenerateTokenResponse){}
+    
 }
 
 
@@ -82,14 +104,6 @@ message RegisterResponse{
     string created_at = 7;
     string bio = 8;
 }
-
-message ResetPasswordRequest{
-    string email = 1;
-    string username = 2;
-    string new_password = 3;
-}
-
-message ResetPasswordResponse{}
 
 message ChangePasswordRequest{
     string old_password = 1;
