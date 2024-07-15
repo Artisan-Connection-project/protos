@@ -48,8 +48,6 @@ service AuthenticationService {
     // Verifies the provided access token
     rpc VerifyToken(VerifyTokenRequest) returns (VerifyTokenResponse){}
 
-    // Cancels an access token, making it unusable
-    rpc CancelToken(CancelTokenRequest) returns (CancelTokenResponse){}
     // Retrieves a list of users with optional pagination and sorting
     rpc GetUsersInfo(GetUsersInfoRequest) returns (GetUsersInfoResponse){}
 
@@ -130,13 +128,7 @@ message VerifyTokenResponse{
     bool is_valid = 1;
 }
 
-message CancelTokenRequest{
-    string access_token = 1;
-}
 
-message CancelTokenResponse{
-    string message = 1;
-}
 
 
 //User messages
