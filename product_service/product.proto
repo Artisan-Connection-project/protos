@@ -155,14 +155,6 @@ message PlaceOrderResponse {
     string id = 1;
 }
 
-// CancelOrderRequest message
-message CancelOrderRequest {
-    string id = 1;
-    string status = 2;
-}
-
-// CancelOrderResponse message
-message CancelOrderResponse {}
 
 // UpdateOrderStatusRequest message
 message UpdateOrderStatusRequest {
@@ -305,7 +297,7 @@ service ProductService {
     rpc AddRating(AddRatingRequest) returns (AddRatingResponse);
     rpc GetRatings(GetRatingsRequest) returns (GetRatingsResponse);
     rpc PlaceOrder(PlaceOrderRequest) returns (PlaceOrderResponse);
-    rpc CancelOrder(CancelOrderRequest) returns (CancelOrderResponse);
+   
     rpc UpdateOrderStatus(UpdateOrderStatusRequest) returns (UpdateOrderStatusResponse);
     rpc GetOrders(GetOrdersRequest) returns (GetOrdersResponse);
     rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
