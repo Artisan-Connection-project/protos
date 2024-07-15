@@ -86,6 +86,7 @@ message RegisterResponse{
 message ResetPasswordRequest{
     string email = 1;
     string username = 2;
+    string new_password = 3;
 }
 
 message ResetPasswordResponse{}
