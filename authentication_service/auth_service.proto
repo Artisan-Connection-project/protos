@@ -111,13 +111,17 @@ message VerifyTokenRequest{
     string access_token = 1;
 }
 
-message VerifyTokenResponse{}
+message VerifyTokenResponse{
+    bool is_valid = 1;
+}
 
 message CancelTokenRequest{
     string access_token = 1;
 }
 
-message CancelTokenResponse{}
+message CancelTokenResponse{
+    string message = 1;
+}
 
 
 //User messages
@@ -179,7 +183,7 @@ message DeleteUserInfoResponse{}
 
 message GenerateTokenRequest{
     string username = 1;
-    string email = 2;
+    string eamil = 2;
     string password = 3;
 }
 
