@@ -297,7 +297,7 @@ service ProductService {
     rpc AddRating(AddRatingRequest) returns (AddRatingResponse);
     rpc GetRatings(GetRatingsRequest) returns (GetRatingsResponse);
     rpc PlaceOrder(PlaceOrderRequest) returns (PlaceOrderResponse);
-   
+    rpc CancelOrder(CancelOrderRequest) returns (CancelOrderResponse);
     rpc UpdateOrderStatus(UpdateOrderStatusRequest) returns (UpdateOrderStatusResponse);
     rpc GetOrders(GetOrdersRequest) returns (GetOrdersResponse);
     rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
@@ -311,3 +311,9 @@ service ProductService {
     rpc GetRecommendations(GetRecommendationsRequest) returns (GetRecommendationsResponse);
     rpc GetArtisanRankings(GetArtisanRankingsRequest) returns (GetArtisanRankingsResponse);
 }
+
+message CancelOrderRequest{
+    string id = 1;
+}
+
+message CancelOrderResponse{}
