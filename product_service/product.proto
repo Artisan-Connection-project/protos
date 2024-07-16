@@ -121,7 +121,9 @@ message DeleteProductRequest {
 }
 
 // DeleteProductResponse message
-message DeleteProductResponse {}
+message DeleteProductResponse {
+    string message = 1;
+}
 
 // SearchProductsRequest message
 message SearchProductsRequest {
