@@ -78,7 +78,16 @@ message EditProductRequest {
 }
 
 // EditProductResponse message
-message EditProductResponse {}
+message EditProductResponse {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    double price = 4;
+    string category_id = 5;
+    string artisan_id = 6;
+    int32 quantity = 7;
+    string updated_at=8;
+}
 
 // GetProductRequest message
 message GetProductRequest {
