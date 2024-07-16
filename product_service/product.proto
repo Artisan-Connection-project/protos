@@ -4,8 +4,6 @@ package product_service;
 
 option go_package = "genproto/product_service";
 
-import "google/protobuf/timestamp.proto";
-
 // Product message definition
 message Product {
     string id = 1;
