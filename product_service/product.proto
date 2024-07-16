@@ -62,6 +62,13 @@ message AddProductRequest {
 // AddProductResponse message
 message AddProductResponse {
     string id = 1;
+    string name = 2;
+    string description = 3;
+    double price = 4;
+    string category_id = 5;
+    string artisan_id = 6;
+    int32 quantity = 7;
+    string created_at = 8;
 }
 
 // EditProductRequest message
