@@ -151,6 +151,11 @@ message AddRatingRequest {
 // AddRatingResponse message
 message AddRatingResponse {
     string id = 1;
+    string product_id = 2;
+    string user_id = 3;
+    double rating = 4;
+    string comment = 5;
+    string created_at = 6;
 }
 
 // GetRatingsRequest message
