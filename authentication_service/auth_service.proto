@@ -41,7 +41,6 @@ service AuthenticationService {
 
     // Changes the user's password
     rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse){}
-    rpc VerifyResetCode(VerifyResetCodeRequest) returns (VerifyResetCodeResponse);
     // Refreshes the access token using a refresh token
     rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse){}
 
@@ -127,10 +126,6 @@ message VerifyTokenRequest{
 message VerifyTokenResponse{
     bool is_valid = 1;
 }
-
-
-
-
 //User messages
 message GetUsersInfoRequest{
     string page = 2;
