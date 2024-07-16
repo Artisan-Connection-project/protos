@@ -237,6 +237,9 @@ message AddArtisanCategoryRequest {
 // AddArtisanCategoryResponse message
 message AddArtisanCategoryResponse {
     string id = 1;
+    string name = 2;
+    string description = 3;
+    string created_at = 4;
 }
 
 // AddProductCategoryRequest message
@@ -248,6 +251,9 @@ message AddProductCategoryRequest {
 // AddProductCategoryResponse message
 message AddProductCategoryResponse {
     string id = 1;
+    string name = 2;
+    string description = 3;
+    string created_at = 4;
 }
 
 // GetStatisticsRequest message
