@@ -15,8 +15,8 @@ message Product {
     string category_id = 5;
     string artisan_id = 6;
     int32 quantity = 7;
-    google.protobuf.Timestamp created_at = 8;
-    google.protobuf.Timestamp updated_at = 9;
+    string created_at = 8;
+    string updated_at = 9;
 }
 
 // Rating message definition
@@ -26,7 +26,7 @@ message Rating {
     string user_id = 3;
     double rating = 4;
     string comment = 5;
-    google.protobuf.Timestamp created_at = 6;
+    string created_at = 6;
 }
 
 // Order message definition
@@ -36,8 +36,8 @@ message Order {
     double total_amount = 3;
     string status = 4;
     string shipping_address = 5;
-    google.protobuf.Timestamp created_at = 6;
-    google.protobuf.Timestamp updated_at = 7;
+    string created_at = 6;
+    string updated_at = 7;
 }
 
 // Payment message definition
@@ -48,7 +48,7 @@ message Payment {
     string status = 4;
     string transaction_id = 5;
     string payment_method = 6;
-    google.protobuf.Timestamp created_at = 7;
+    string created_at = 7;
 }
 
 // AddProductRequest message
