@@ -112,6 +112,8 @@ message DeleteProductResponse {}
 // SearchProductsRequest message
 message SearchProductsRequest {
     string query = 1;
+    string limit = 2;
+    string page = 3;
 }
 
 // SearchProductsResponse message
@@ -166,7 +168,10 @@ message UpdateOrderStatusRequest {
 message UpdateOrderStatusResponse {}
 
 // GetOrdersRequest message
-message GetOrdersRequest {}
+message GetOrdersRequest {
+    string limit = 1;
+    string page = 2;
+}
 
 // GetOrdersResponse message
 message GetOrdersResponse {
