@@ -168,10 +168,21 @@ message GetRatingsResponse {
     repeated Rating ratings = 1;
 }
 
+message order_item {
+    string product_id = 1;
+    int32 quantity = 2;
+}
+
+message item {
+    string product_id = 1;
+    int32 quantity = 2;
+    float price = 3;
+}
+
 // PlaceOrderRequest message
 message PlaceOrderRequest {
     string user_id = 1;
-    double total_amount = 2;
+    repeated item items = 2;
     string status = 3;
     string shipping_address = 4;
 }
@@ -179,6 +190,12 @@ message PlaceOrderRequest {
 // PlaceOrderResponse message
 message PlaceOrderResponse {
     string id = 1;
+    string user_id = 2;
+    repeated order_item items = 3;
+    float total_price = 4;
+    string status = 5;
+    string shipping_address = 6;
+    string created_at = 7;
 }
 
 
