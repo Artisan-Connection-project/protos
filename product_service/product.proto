@@ -281,6 +281,7 @@ message UpdateShippingInfoResponse {
 message AddArtisanCategoryRequest {
     string name = 1;
     string description = 2;
+    string artisan_id = 3;
 }
 
 // AddArtisanCategoryResponse message

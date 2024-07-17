@@ -60,9 +60,17 @@ service AuthenticationService {
     rpc DeleteUserInfo(DeleteUserInfoRequest) returns (DeleteUserInfoResponse){}
 
     rpc GenerateToken(GenerateTokenRequest) returns (GenerateTokenResponse){}
-    
+ 
+        rpc SendVerificationEmail(SendVerificationEmailRequest) returns (SendVerificationEmailResponse){}
+ 
+}
+message SendVerificationEmailRequest {
+    string email = 1;
 }
 
+message SendVerificationEmailResponse {
+    string message = 1;
+}
 
 // Message Definitions
 message LoginRequest {
