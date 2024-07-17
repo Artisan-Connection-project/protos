@@ -251,7 +251,8 @@ message PayOrderResponse {
 
 // CheckPaymentStatusRequest message
 message CheckPaymentStatusRequest {
-    string id = 1;
+    string payment_id = 1;
+    string order_id = 2;
 }
 
 // CheckPaymentStatusResponse message
