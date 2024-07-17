@@ -262,12 +262,20 @@ message CheckPaymentStatusResponse {
 
 // UpdateShippingInfoRequest message
 message UpdateShippingInfoRequest {
-    string id = 1;
-    string shipping_address = 2;
+    string order_id = 1;
+    string tracking_number = 2;
+    string carrier = 3;
+    string estimated_delivery_date = 4;
 }
 
 // UpdateShippingInfoResponse message
-message UpdateShippingInfoResponse {}
+message UpdateShippingInfoResponse {
+    string order_id = 1;
+    string tracking_number = 2;
+    string carrier = 3;
+    string estimated_delivery_date = 4;
+    string updated_at = 5;
+}
 
 // AddArtisanCategoryRequest message
 message AddArtisanCategoryRequest {
