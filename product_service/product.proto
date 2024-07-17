@@ -364,4 +364,8 @@ message CancelOrderRequest{
     string id = 1;
 }
 
-message CancelOrderResponse{}
+message CancelOrderResponse{
+    string id = 1;
+    string status = 2; 
+    string updated_at = 3;
+}
