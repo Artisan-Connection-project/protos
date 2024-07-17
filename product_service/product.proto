@@ -202,7 +202,11 @@ message UpdateOrderStatusRequest {
 }
 
 // UpdateOrderStatusResponse message
-message UpdateOrderStatusResponse {}
+message UpdateOrderStatusResponse {
+    string id = 1;
+    string status = 2;
+    string updated_at = 3;
+}
 
 // GetOrdersRequest message
 message GetOrdersRequest {
