@@ -232,15 +232,20 @@ message GetOrderResponse {
 // PayOrderRequest message
 message PayOrderRequest {
     string order_id = 1;
-    double amount = 2;
-    string status = 3;
-    string transaction_id = 4;
-    string payment_method = 5;
+    string card_number = 2;
+    string expiry_date = 3;
+    string cvv = 4;
 }
 
 // PayOrderResponse message
 message PayOrderResponse {
     string id = 1;
+    string order_id = 2;
+    double amount = 3;
+    string status = 4;
+    string transaction_id = 5;
+    string payment_method = 6;
+    string created_at = 7;
 }
 
 // CheckPaymentStatusRequest message
