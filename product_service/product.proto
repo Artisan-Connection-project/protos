@@ -232,9 +232,10 @@ message GetOrderResponse {
 // PayOrderRequest message
 message PayOrderRequest {
     string order_id = 1;
-    string card_number = 2;
-    string expiry_date = 3;
-    string cvv = 4;
+    string payment_method = 2;
+    string card_number = 3;
+    string expiry_date = 4;
+    string cvv = 5;
 }
 
 // PayOrderResponse message
